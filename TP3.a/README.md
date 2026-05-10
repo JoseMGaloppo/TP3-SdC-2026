@@ -92,7 +92,7 @@ Por ello es muy importante no confiar ciegamente en el pseudocodigo y crear algu
 
 A continuación veremos el pseudocódigo que nos otorga Ghidra, notaremos que no se observa los valores esperados ya que las versiones modernas de Ghidra realizan una eliminación del código muerto y no nos muestra el if comparando el hexa usado como variable pero que claramente ingresa e imprime el mensaje.
 
-![ghidra](/TP3.a/img/ghidra.png)
+![ghidra](img/ghidra.png)
 
 # 5. Ejecución en Hardware Físico (Bare Metal)
 
