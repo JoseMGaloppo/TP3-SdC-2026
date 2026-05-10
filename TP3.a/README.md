@@ -9,6 +9,11 @@
 ---
 
 # 1. Introducción General
+En este trabajo práctico se estudia el entorno UEFI y su funcionamiento como sistema moderno de arranque, reemplazando al antiguo BIOS. A lo largo del desarrollo se exploran conceptos relacionados con la interacción con el firmware, el manejo de memoria y variables de arranque, así como la ejecución de aplicaciones en un entorno pre-sistema operativo.
+
+Además, se realiza un análisis de seguridad orientado a comprender posibles vulnerabilidades y mecanismos utilizados por amenazas como los bootkits, junto con tareas de ingeniería inversa y análisis de binarios utilizando herramientas especializadas.
+
+Finalmente, el trabajo culmina con la ejecución de aplicaciones UEFI en hardware físico (bare metal), permitiendo observar el comportamiento real del firmware y las restricciones de seguridad presentes en los sistemas actuales, como Secure Boot.
 
 
 # 2. Organización de los Repositorios
@@ -93,7 +98,7 @@ A continuación veremos el pseudocódigo que nos otorga Ghidra, notaremos que no
 
 Lo que haremos a continuación será trasladar el binario compilado a una computadora real sorteando las restricciones del Secure Boot. Para ello utilizaremos un pendrive como medio de arranque, se tuvo que destruir la tabla de particiones existentes del mismo y crear una única partición limpia formateada en **FAT32**, luego se creó la ruta de directorios ``/EFI/BOOT/`` y se copió la UEFI Shell renombrada como ``BOOTX64.EFI``:
 
-![pendrive](/TP3.a/img/pendrive.png)
+![pendrive](img/pendrive.png)
 
 Se utilizó una aplicación en C distinta a la que se utilizó en el anterior punto ya que fallaba a la hora de mostrar los mensajes por pantalla. Para ello se implementó un ciclo ``while(1)``, esto para impedir que el programa ejecute el ``return EFI_SUCCESS`` ya que este terminaba tán rapido que le devolvía el control a la UEFI Shell al instante y no permitía ver los mensajes.
 
@@ -105,7 +110,7 @@ Finalmente desde el menú de arranque se seleccionó el dispositivo USB. Al carg
 
 A continuación veremos el resultado:
 
-![baremetal](/TP3.a/img/baremetal.png)
+![baremetal](img/baremetal.png)
 
 
 
