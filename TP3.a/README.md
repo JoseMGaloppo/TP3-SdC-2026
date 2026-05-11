@@ -75,12 +75,12 @@ Utilizamos este protocolo ya que nos encontramos en un escenario pre-SO, es deci
 Una vez generado el binario nativo en formato estándar PE/COFF, lo que buscamos es hacer el proceso inverso: analizar un archivo compilado. 
 Para ello realizamos algunos pasos:
 - Primero ejecutamos el comando `file aplicacion.efi` para leer los primeros bytes del archivo y así poder determinar su verdadero tipo analizando su estructura interna. A continuación confirmamos que el archivo ``aplicacion.efi`` es un ejecutable PE32+.
-![file](/TP3.a/img/file.png)
+![file](img/file.png)
 
 - Luego seguimos ejecutando el comando ``readelf -h aplicacion.efi`` que nos muestra las cabeceras del formato del archivo objeto, esto para poder verificar la arquitectura. Como observamos en la imagen el comando nos dice que el archivo ``aplicacion.efi`` no es un archivo ELF, esto ya que el comando se encarga de leer cabeceras de archivos en ese formato pero el archivo pasado utiliza el formato estándar PE/COFF. Entonces al intentar buscar y leer los magic bytes se encuentra con otra firma diferente a la de un archivo Linux.
-![readelf](/TP3.a/img/readelf.png)
+![readelf](img/readelf.png)
 Consideramos que si queremos ver las cabeceras del archivo ``.efi`` debemos utilizar el comando ``objdump`` que es la herramienta para leer binarios de múltiples formatos.
-![objdump](/TP3.a/img/objdump.png)
+![objdump](img/objdump.png)
 
 - Por último haremos uso de la herramienta Ghidra que es una plataforma de Ingeniería Inversa de Software, su función principal es realizar el **desensamblado** del código máquina a Assembler puro y la **descompilación** que trata de reconstruir un pseudocódigo de C a partir del Assembler obtenido. Esto es muy útil a la hora de analizar firmware sin tener el código fuente original.
 
